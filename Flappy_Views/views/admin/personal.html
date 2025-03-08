@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal - Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+
+        .dark .text-gray-700,
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+
+        .dark input,
+        .dark textarea {
+            background-color: #4a5568;
+            color: #e2e8f0;
+            border-color: #718096;
+        }
+
+        .transition-bg {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 transition-bg">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 min-h-screen hidden md:block transition-bg">
+            <div class="p-4 border-b border-gray-700">
+                <h2 class="text-xl font-bold text-blue-400">Admin Dashboard</h2>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="admin.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-stock.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-box mr-3"></i>
+                            Product Stocks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="income-gen.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-dollar-sign mr-3"></i>
+                            Income Generated
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expenses-tb.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-table mr-3"></i>
+                            Expenses Table
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sales.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Sales Report
+                        </a>
+                    </li>
+                    <li>
+                        <a href="staff-manage.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-users mr-3"></i>
+                            Staff Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="manufacturer.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-industry mr-3"></i>
+                            Manufacturer Management
+                        </a>
+                    </li>
+                    <li class="relative group">
+                        <button class="flex items-center w-full p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-user mr-3"></i>
+                            Customer Management
+                            <i class="fas fa-chevron-down ml-auto"></i>
+                        </button>
+                        <ul class="hidden group-hover:block absolute left-full top-0 ml-2 w-48 bg-gray-700 rounded-lg shadow-lg">
+                            <li>
+                                <a href="order-manage.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Order Management</a>
+                            </li>
+                            <li>
+                                <a href="feedback-cards.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Feedback Cards</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="hardware.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-desktop mr-3"></i>
+                            Hardware
+                        </a>
+                    </li>
+                    <li>
+                        <a href="personal.html" class="flex items-center p-2 bg-blue-600 text-white rounded-lg transition-colors duration-200">
+                            <i class="fas fa-user-circle mr-3"></i>
+                            Personal
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <header class="bg-white shadow-md p-4 flex justify-between items-center transition-bg">
+                <h1 class="text-2xl font-semibold text-gray-800">Personal Profile</h1>
+                <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </header>
+
+            <div class="container mx-auto mt-8 p-4">
+                <div class="bg-white shadow-lg rounded-lg p-6 mb-8 transition-bg">
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Admin User Details</h2>
+                    <form id="adminForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="John Doe">
+                            </div>
+                            <div>
+                                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                                <input type="text" id="username" name="username" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="johndoe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="john.doe@example.com">
+                            </div>
+                            <div>
+                                <label for="location" class="block text-sm font-medium text-gray-700">Business Location</label>
+                                <input type="text" id="location" name="location" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="New York">
+                            </div>
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                                <input type="password" id="password" name="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="********">
+                            </div>
+                            <div>
+                                <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                                <input type="password" id="confirm-password" name="confirm-password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-bg" value="********">
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-colors duration-200">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="bg-white shadow-lg rounded-lg p-6 transition-bg">
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Admin Privileges</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 rounded-lg p-4 shadow transition-bg">
+                            <h3 class="text-lg font-medium mb-2 text-gray-800">Expenses Report</h3>
+                            <p class="text-gray-600 mb-2">
+                              Generate a comprehensive expenses report in MS Excel format for detailed analysis and record-keeping.
+                          </p>
+                          <button id="generateReport" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200">
+                            Generate Expenses Report
+                        </button>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 shadow transition-bg">
+                            <h3 class="text-lg font-medium mb-2 text-gray-800">Sales Report</h3>
+                            <p class="text-gray-600 mb-2">
+                                Generate a comprehensive sales report in MS Excel format for detailed analysis and record-keeping.
+                            </p>
+                            <button id="generateReport" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200">
+                                Generate Sales Report
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div class="bg-gray-50 rounded-lg p-4 shadow transition-bg">
+                          <h3 class="text-lg font-medium mb-2 text-gray-800">Income Report</h3>
+                          <p class="text-gray-600 mb-2">
+                            Generate a comprehensive income report in MS Excel format for detailed analysis and record-keeping.
+                        </p>
+                        <button id="generateReport" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200">
+                          Generate Income Report
+                      </button>
+                      </div>
+                      <div class="bg-gray-50 rounded-lg p-4 shadow transition-bg">
+                          <h3 class="text-lg font-medium mb-2 text-gray-800">Product Stock Report</h3>
+                          <p class="text-gray-600 mb-2">
+                              Generate a comprehensive stock report in MS Excel format for detailed analysis and record-keeping.
+                          </p>
+                          <button id="generateReport" class="mt-2 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-200">
+                              Generate Stock Report
+                          </button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setDarkMode(isDark) {
+            body.classList.toggle('dark', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+        }
+
+        // Check for saved user preference, if any, on load
+        const darkModeStorage = localStorage.getItem('darkMode');
+
+        if (darkModeStorage === 'enabled') {
+            setDarkMode(true);
+        } else if (darkModeStorage === 'disabled') {
+            setDarkMode(false);
+        } else {
+            setDarkMode(prefersDarkScheme.matches);
+        }
+
+        // Add toggle event listener
+        darkModeToggle.addEventListener('click', () => {
+            setDarkMode(!body.classList.contains('dark'));
+        });
+
+        // Listen for changes to the user's preferred color scheme
+        prefersDarkScheme.addListener((evt) => {
+            setDarkMode(evt.matches);
+        });
+
+        // Admin form submission
+        const adminForm = document.getElementById('adminForm');
+        adminForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(adminForm);
+            const adminData = Object.fromEntries(formData.entries());
+            console.log('Admin data submitted:', adminData);
+            
+            // Validate password match
+            if (adminData.password !== adminData['confirm-password']) {
+                alert('Passwords do not match. Please try again.');
+                return;
+            }
+            
+            // Here you would typically send the data to your backend
+            // For now, we'll just show an alert
+            alert('Admin details updated successfully!');
+        });
+
+        // Generate sales report
+        const generateReportBtn = document.getElementById('generateReport');
+        generateReportBtn.addEventListener('click', () => {
+            // Sample sales data
+            const salesData = [
+                { date: '2023-01-01', product: 'Widget A', quantity: 10, revenue: 1000 },
+                { date: '2023-01-02', product: 'Widget B', quantity: 5, revenue: 750 },
+                { date: '2023-01-03', product: 'Widget C', quantity: 8, revenue: 1200 },
+                { date: '2023-01-04', product: 'Widget A', quantity: 15, revenue: 1500 },
+                { date: '2023-01-05', product: 'Widget B', quantity: 7, revenue: 1050 },
+            ];
+
+            // Create workbook and worksheet
+            const wb = XLSX.utils.book_new();
+            const ws = XLSX.utils.json_to_sheet(salesData);
+
+            // Add worksheet to workbook
+            XLSX.utils.book_append_sheet(wb, ws, 'Sales Report');
+
+            // Generate Excel file
+            XLSX.writeFile(wb, 'sales_report.xlsx');
+
+            alert('Sales report generated successfully!');
+        });
+    </script>
+</body>
+</html>

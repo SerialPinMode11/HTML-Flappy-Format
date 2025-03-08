@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Stocks - Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 min-h-screen hidden md:block">
+            <div class="p-4 border-b border-gray-700">
+                <h2 class="text-xl font-bold text-[#ff6b6b]">Admin Dashboard</h2>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="admin.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-stock.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-box mr-3"></i>
+                            Product Stocks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="income-gen.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-dollar-sign mr-3"></i>
+                            Income Generated
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expenses-tb.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-table mr-3"></i>
+                            Expenses Table
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sales.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Sales Report
+                        </a>
+                    </li>
+                    <li>
+                        <a href="staff-manage.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-users mr-3"></i>
+                            Staff Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="manufacturer.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-industry mr-3"></i>
+                            Manufacturer Management
+                        </a>
+                    </li>
+                    <li class="relative group">
+                        <button class="flex items-center w-full p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-user mr-3"></i>
+                            Customer Management
+                            <i class="fas fa-chevron-down ml-auto"></i>
+                        </button>
+                        <ul class="hidden group-hover:block absolute left-full top-0 ml-2 w-48 bg-gray-700 rounded-lg shadow-lg">
+                            <li><a href="order-manage.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Order Management</a></li>
+                            <li><a href="feedback-cards.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Feedback Cards</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="hardware.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-desktop mr-3"></i>
+                            Hardware
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    <h1 class="text-2xl font-semibold text-gray-800">Product Stocks</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="search" placeholder="Search products..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <button class="relative">
+                            <i class="fas fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-[#ff6b6b] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-gray-900" onclick="window.location.href='personal.html'">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="font-medium">John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <!-- Stock Overview -->
+                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Total Products</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">1,234</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Low Stock Items</h3>
+                        <p class="text-3xl font-bold text-yellow-500">23</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Out of Stock</h3>
+                        <p class="text-3xl font-bold text-red-500">7</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Stock Value</h3>
+                        <p class="text-3xl font-bold text-green-500">$342,567</p>
+                    </div>
+                </div>
+
+                <!-- Stock Chart -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Stock Levels Over Time</h3>
+                    <div id="stockChart" style="height: 300px;"></div>
+                </div>
+
+                <!-- Product Table -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">Product List</h3>
+                            <button class="bg-[#ff6b6b] text-white px-4 py-2 rounded-lg hover:bg-[#ff5252] transition-colors duration-300">
+                                <i class="fas fa-plus mr-2"></i>Add New Product
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-gray-200">
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Product Name</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">SKU</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Category</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">In Stock</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Price</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 text-sm">Product A</td>
+                                        <td class="py-4 text-sm">SKU-001</td>
+                                        <td class="py-4 text-sm">Electronics</td>
+                                        <td class="py-4 text-sm">150</td>
+                                        <td class="py-4 text-sm">$299.99</td>
+                                        <td class="py-4 text-sm">
+                                            <button class="text-blue-500 hover:text-blue-700 mr-2"><i class="fas fa-edit"></i></button>
+                                            <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 text-sm">Product B</td>
+                                        <td class="py-4 text-sm">SKU-002</td>
+                                        <td class="py-4 text-sm">Clothing</td>
+                                        <td class="py-4 text-sm">75</td>
+                                        <td class="py-4 text-sm">$49.99</td>
+                                        <td class="py-4 text-sm">
+                                            <button class="text-blue-500 hover:text-blue-700 mr-2"><i class="fas fa-edit"></i></button>
+                                            <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 text-sm">Product C</td>
+                                        <td class="py-4 text-sm">SKU-003</td>
+                                        <td class="py-4 text-sm">Home & Garden</td>
+                                        <td class="py-4 text-sm">200</td>
+                                        <td class="py-4 text-sm">$129.99</td>
+                                        <td class="py-4 text-sm">
+                                            <button class="text-blue-500 hover:text-blue-700 mr-2"><i class="fas fa-edit"></i></button>
+                                            <button class="text-red-500 hover:text-red-700"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Stock Chart
+        var stockOptions = {
+            series: [{
+                name: 'Stock Level',
+                data: [150, 180, 160, 200, 190, 220, 240]
+            }],
+            chart: {
+                height: 300,
+                type: 'line',
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#ff6b6b'],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Stock Level'
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return val + " units"
+                    }
+                }
+            }
+        };
+
+        var stockChart = new ApexCharts(document.querySelector("#stockChart"), stockOptions);
+        stockChart.render();
+    </script>
+</body>
+</html>

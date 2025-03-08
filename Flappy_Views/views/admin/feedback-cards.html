@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Cards - Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 min-h-screen hidden md:block">
+            <div class="p-4 border-b border-gray-700">
+                <h2 class="text-xl font-bold text-[#ff6b6b]">Admin Dashboard</h2>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="admin.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-stock.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-box mr-3"></i>
+                            Product Stocks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="income-gen.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-dollar-sign mr-3"></i>
+                            Income Generated
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expenses-tb.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-table mr-3"></i>
+                            Expenses Table
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sales.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Sales Report
+                        </a>
+                    </li>
+                    <li>
+                        <a href="staff-manage.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-users mr-3"></i>
+                            Staff Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="manufacturer.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-industry mr-3"></i>
+                            Manufacturer Management
+                        </a>
+                    </li>
+                    <li class="relative group">
+                        <button class="flex items-center w-full p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-user mr-3"></i>
+                            Customer Management
+                            <i class="fas fa-chevron-down ml-auto"></i>
+                        </button>
+                        <ul class="hidden group-hover:block absolute left-full top-0 ml-2 w-48 bg-gray-700 rounded-lg shadow-lg">
+                            <li><a href="order-manage.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Order Management</a></li>
+                            <li><a href="feedback-cards.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Feedback Cards</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="hardware.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-desktop mr-3"></i>
+                            Hardware
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    <h1 class="text-2xl font-semibold text-gray-800">Feedback Cards</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="search" placeholder="Search feedback..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <button class="relative">
+                            <i class="fas fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-[#ff6b6b] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="font-medium">John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <!-- Feedback Overview -->
+                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Total Feedback</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">345</p>
+                        <p class="text-sm text-gray-500 mt-2">+23 from last week</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Positive Feedback</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">287</p>
+                        <p class="text-sm text-gray-500 mt-2">83% of total feedback</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Negative Feedback</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">38</p>
+                        <p class="text-sm text-gray-500 mt-2">11% of total feedback</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Average Rating</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">4.3/5</p>
+                        <p class="text-sm text-gray-500 mt-2">+0.2 from last month</p>
+                    </div>
+                </div>
+
+                <!-- Feedback Sentiment Chart -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Feedback Sentiment Over Time</h3>
+                    <div id="feedbackSentimentChart" style="height: 300px;"></div>
+                </div>
+
+                <!-- Feedback Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-2 text-gray-800">John Smith</h4>
+                        <p class="text-sm text-gray-600 mb-4">2023-05-15</p>
+                        <p class="text-gray-700">"Great product! I love the new features."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="flex mr-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500"></i>
+                            </div>
+                            <span class="text-sm text-gray-600">5/5</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-2 text-gray-800">Jane Doe</h4>
+                        <p class="text-sm text-gray-600 mb-4">2023-05-12</p>
+                        <p class="text-gray-700">"The delivery was a bit slow, but the product itself is excellent."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="flex mr-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="far fa-star text-yellow-500"></i>
+                            </div>
+                            <span class="text-sm text-gray-600">4/5</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="text-lg font-semibold mb-2 text-gray-800">Mike Johnson</h4>
+                        <p class="text-sm text-gray-600 mb-4">2023-05-10</p>
+                        <p class="text-gray-700">"I had some issues with the website, but customer support was very helpful."</p>
+                        <div class="mt-4 flex items-center">
+                            <div class="flex mr-2">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>
+                                <i class="far fa-star text-yellow-500 mr-1"></i>
+                                <i class="far fa-star text-yellow-500"></i>
+                            </div>
+                            <span class="text-sm text-gray-600">3/5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Feedback Sentiment Chart
+        var feedbackSentimentOptions = {
+            series: [{
+                name: 'Positive',
+                data: [75, 80, 85, 82, 88, 90]
+            }, {
+                name: 'Negative',
+                data: [12, 10, 8, 15, 11, 9]
+            }],
+            chart: {
+                height: 300,
+                type: 'line',
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#ff6b6b', '#4ecdc4'],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Feedback Count'
+                }
+            }
+        };
+
+        var feedbackSentimentChart = new ApexCharts(document.querySelector("#feedbackSentimentChart"), feedbackSentimentOptions);
+        feedbackSentimentChart.render();
+    </script>
+</body>
+</html>

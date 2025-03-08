@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Exclusive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#45B7D1',
+                        neutral: '#2C3E50',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-primary">Exclusive</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="home.html" class="text-neutral hover:text-primary transition-colors">Home</a>
+                <a href="contact.html" class="text-neutral hover:text-primary transition-colors">Contact</a>
+                <a href="about.html" class="text-primary">About</a>
+                <a href="login.html" class="text-neutral hover:text-primary transition-colors">Sign Up</a>
+            </nav>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" placeholder="What are you looking for?" class="pl-4 pr-10 py-2 border-2 border-gray-200 rounded-full w-64 focus:outline-none focus:border-primary transition-colors">
+                    <button class="absolute right-3 top-2.5 text-gray-400 hover:text-primary transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="far fa-heart text-xl"></i>
+                </button>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <h2 class="text-4xl font-bold text-center mb-12 text-neutral">About Us</h2>
+        
+        <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <h3 class="text-2xl font-semibold mb-6 text-neutral">Our Story</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                Founded in 2010, Exclusive has been at the forefront of sustainable duck farming and premium poultry products. 
+                What started as a small family farm has grown into a trusted supplier of high-quality duck meat, eggs, and related products.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                We take pride in our commitment to ethical farming practices and maintaining the highest standards of quality in all our products.
+                Our dedication to sustainability and animal welfare has made us a leader in the industry, trusted by chefs and home cooks alike.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-heart text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-4 text-neutral">Quality First</h4>
+                <p class="text-gray-600">We never compromise on the quality of our products and services, ensuring that every item meets our rigorous standards.</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-leaf text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-4 text-neutral">Sustainability</h4>
+                <p class="text-gray-600">Committed to environmental responsibility and sustainable farming practices, we strive to minimize our ecological footprint.</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-2xl"></i>
+                </div>
+                <h4 class="text-xl font-semibold mb-4 text-neutral">Community</h4>
+                <p class="text-gray-600">Supporting local communities and maintaining strong relationships with our customers is at the heart of everything we do.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-neutral text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Exclusive. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

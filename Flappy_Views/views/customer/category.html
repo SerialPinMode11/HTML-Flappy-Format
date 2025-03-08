@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Products - Exclusive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#45B7D1',
+                        neutral: '#2C3E50',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-primary">Exclusive</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-neutral hover:text-primary transition-colors">Home</a>
+                <a href="contact.html" class="text-neutral hover:text-primary transition-colors">Contact</a>
+                <a href="about.html" class="text-neutral hover:text-primary transition-colors">About</a>
+                <a href="login.html" class="text-neutral hover:text-primary transition-colors">Sign Up</a>
+            </nav>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" placeholder="What are you looking for?" class="pl-4 pr-10 py-2 border-2 border-gray-200 rounded-full w-64 focus:outline-none focus:border-primary transition-colors">
+                    <button class="absolute right-3 top-2.5 text-gray-400 hover:text-primary transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="far fa-heart text-xl"></i>
+                </button>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold mb-8 text-neutral">Duck Products</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Product Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/300x200" alt="Duck product" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-2">Whole Duck</h3>
+                    <p class="text-gray-600 mb-4">Fresh, farm-raised duck</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary font-bold">$24.99</span>
+                        <button class="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary-dark transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat the product card structure for more products -->
+            <!-- Product Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/300x200" alt="Duck eggs" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-2">Duck Eggs (Dozen)</h3>
+                    <p class="text-gray-600 mb-4">Farm-fresh duck eggs</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary font-bold">$8.99</span>
+                        <button class="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary-dark transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/300x200" alt="Duck breast" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-2">Duck Breast</h3>
+                    <p class="text-gray-600 mb-4">Premium duck breast fillet</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary font-bold">$18.99</span>
+                        <button class="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary-dark transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <img src="https://via.placeholder.com/300x200" alt="Duck confit" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-2">Duck Confit</h3>
+                    <p class="text-gray-600 mb-4">Traditional duck confit</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-primary font-bold">$22.99</span>
+                        <button class="bg-primary text-white px-4 py-2 rounded-full hover:bg-primary-dark transition-colors">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-neutral text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Exclusive. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Generated - Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="bg-gray-800 text-white w-64 min-h-screen hidden md:block">
+            <div class="p-4 border-b border-gray-700">
+                <h2 class="text-xl font-bold text-[#ff6b6b]">Admin Dashboard</h2>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="admin.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="product-stock.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-box mr-3"></i>
+                            Product Stocks
+                        </a>
+                    </li>
+                    <li>
+                        <a href="income-gen.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-dollar-sign mr-3"></i>
+                            Income Generated
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expenses-tb.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-table mr-3"></i>
+                            Expenses Table
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sales.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Sales Report
+                        </a>
+                    </li>
+                    <li>
+                        <a href="staff-manage.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-users mr-3"></i>
+                            Staff Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="manufacturer.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-industry mr-3"></i>
+                            Manufacturer Management
+                        </a>
+                    </li>
+                    <li class="relative group">
+                        <button class="flex items-center w-full p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-user mr-3"></i>
+                            Customer Management
+                            <i class="fas fa-chevron-down ml-auto"></i>
+                        </button>
+                        <ul class="hidden group-hover:block absolute left-full top-0 ml-2 w-48 bg-gray-700 rounded-lg shadow-lg">
+                            <li><a href="order-manage.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Order Management</a></li>
+                            <li><a href="feedback-cards.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600">Feedback Cards</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="hardware.html" class="flex items-center p-2 text-gray-300 hover:bg-gray-700 rounded-lg transition-colors duration-200">
+                            <i class="fas fa-desktop mr-3"></i>
+                            Hardware
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                    <h1 class="text-2xl font-semibold text-gray-800">Income Generated</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="search" placeholder="Search..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6b6b] focus:border-transparent">
+                            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                        </div>
+                        <button class="relative">
+                            <i class="fas fa-bell text-gray-600 text-xl"></i>
+                            <span class="absolute -top-1 -right-1 bg-[#ff6b6b] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">3</span>
+                        </button>
+                        <button class="flex items-center space-x-2 text-gray-700 hover:text-gray-900">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Avatar" class="w-8 h-8 rounded-full">
+                            <span class="font-medium">John Doe</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <!-- Income Overview -->
+                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Total Revenue</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">$1,234,567</p>
+                        <p class="text-sm text-gray-500 mt-2">+12.5% from last month</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Average Order Value</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">$85.23</p>
+                        <p class="text-sm text-gray-500 mt-2">+3.2% from last month</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Conversion Rate</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">3.8%</p>
+                        <p class="text-sm text-gray-500 mt-2">+0.5% from last month</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">Net Profit Margin</h3>
+                        <p class="text-3xl font-bold text-[#ff6b6b]">22.4%</p>
+                        <p class="text-sm text-gray-500 mt-2">+1.8% from last month</p>
+                    </div>
+                </div>
+
+                <!-- Income Chart -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Monthly Revenue</h3>
+                    <div id="incomeChart" style="height: 300px;"></div>
+                </div>
+
+                <!-- Top Products Table -->
+                <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Top Performing Products</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-gray-200">
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Product Name</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Category</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Units Sold</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Revenue</th>
+                                        <th class="pb-4 font-semibold text-sm text-gray-600">Profit Margin</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 text-sm">Product A</td>
+                                        <td class="py-4 text-sm">Electronics</td>
+                                        <td class="py-4 text-sm">1,234</td>
+                                        <td class="py-4 text-sm">$123,400</td>
+                                        <td class="py-4 text-sm">25%</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 text-sm">Product B</td>
+                                        <td class="py-4 text-sm">Clothing</td>
+                                        <td class="py-4 text-sm">987</td>
+                                        <td class="py-4 text-sm">$49,350</td>
+                                        <td class="py-4 text-sm">30%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4 text-sm">Product C</td>
+                                        <td class="py-4 text-sm">Home & Garden</td>
+                                        <td class="py-4 text-sm">765</td>
+                                        <td class="py-4 text-sm">$99,450</td>
+                                        <td class="py-4 text-sm">22%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Income Chart
+        var incomeOptions = {
+            series: [{
+                name: 'Revenue',
+                data: [65000, 75000, 80000, 90000, 85000, 95000, 100000, 110000, 105000, 120000, 115000, 130000]
+            }],
+            chart: {
+                height: 300,
+                type: 'area',
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#ff6b6b'],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Revenue ($)'
+                }
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$" + val.toLocaleString()
+                    }
+                }
+            }
+        };
+
+        var incomeChart = new ApexCharts(document.querySelector("#incomeChart"), incomeOptions);
+        incomeChart.render();
+    </script>
+</body>
+</html>

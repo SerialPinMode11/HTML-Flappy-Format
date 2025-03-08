@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product View - Exclusive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#45B7D1',
+                        neutral: '#2C3E50',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-primary">Exclusive</h1>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-neutral hover:text-primary transition-colors">Home</a>
+                <a href="contact.html" class="text-neutral hover:text-primary transition-colors">Contact</a>
+                <a href="about.html" class="text-neutral hover:text-primary transition-colors">About</a>
+                <a href="login.html" class="text-neutral hover:text-primary transition-colors">Sign Up</a>
+            </nav>
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <input type="text" placeholder="What are you looking for?" class="pl-4 pr-10 py-2 border-2 border-gray-200 rounded-full w-64 focus:outline-none focus:border-primary transition-colors">
+                    <button class="absolute right-3 top-2.5 text-gray-400 hover:text-primary transition-colors">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="far fa-heart text-xl"></i>
+                </button>
+                <button class="text-neutral hover:text-primary transition-colors">
+                    <i class="fas fa-shopping-cart text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+            <div class="md:flex">
+                <div class="md:flex-shrink-0">
+                    <img class="h-96 w-full object-cover md:w-96" src="https://via.placeholder.com/400x400" alt="Product Image">
+                </div>
+                <div class="p-8">
+                    <div class="uppercase tracking-wide text-sm text-primary font-semibold">Premium Product</div>
+                    <h2 class="mt-2 text-3xl font-bold text-neutral">Whole Duck</h2>
+                    <p class="mt-2 text-gray-500">Fresh, farm-raised duck perfect for roasting or confit.</p>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-primary">$24.99</span>
+                        <span class="text-sm text-gray-500 ml-2">per duck</span>
+                    </div>
+                    <div class="mt-4 flex items-center">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star text-yellow-400"></i>
+                            <i class="fas fa-star-half-alt text-yellow-400"></i>
+                        </div>
+                        <span class="ml-2 text-sm text-gray-500">(4.5 stars, 24 reviews)</span>
+                    </div>
+                    <div class="mt-6">
+                        <h3 class="text-lg font-semibold text-neutral">Product Details:</h3>
+                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                            <li>Average weight: 4-5 lbs</li>
+                            <li>Humanely raised without antibiotics</li>
+                            <li>Air-chilled for best flavor and texture</li>
+                            <li>Perfect for special occasions or gourmet meals</li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 flex space-x-4">
+                        <button onclick="addToCart()" class="flex-1 bg-primary text-white px-6 py-3 rounded-full hover:bg-primary-dark transition-colors">
+                            Add to Cart
+                        </button>
+                        <button onclick="buyNow()" class="flex-1 bg-secondary text-white px-6 py-3 rounded-full hover:bg-secondary-dark transition-colors">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-neutral text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Exclusive. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function addToCart() {
+            alert('Product added to cart!');
+            // Here you would typically update the cart state and possibly show a confirmation message
+            window.location.href = 'cart.html';
+        }
+
+        function buyNow() {
+            window.location.href = 'payment.html';
+            // This would typically take the user directly to the checkout page
+        }
+    </script>
+</body>
+</html>
+
